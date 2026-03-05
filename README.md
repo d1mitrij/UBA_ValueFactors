@@ -2,7 +2,11 @@
 
 **Handbook on Environmental Value Factors — Methodological Convention 4.0 (December 2025)**
 
-Author: Dr Dimitrij Euler, [Greenings](https://greenings.org) — dimitrij.euler@greenings.org
+**Scripts:** Dr Dimitrij Euler, [Greenings](https://greenings.org) — dimitrij.euler@greenings.org,
+with support of [Claude Code](https://claude.ai/claude-code) (Anthropic)
+
+**Handbook:** Nadia Eser, Dr. Astrid Matthey, Dr. Björn Bünger —
+German Environment Agency (UBA), Dessau-Roßlau, December 2025
 
 ---
 
@@ -11,6 +15,10 @@ Author: Dr Dimitrij Euler, [Greenings](https://greenings.org) — dimitrij.euler
 This repository extracts all monetary value factors from the German Environment Agency
 (Umweltbundesamt, UBA) **Handbook on Environmental Value Factors, MC 4.0** (December 2025)
 and writes them to structured CSV and Excel files in `output/`.
+
+The extraction scripts and documentation were written by Dr Dimitrij Euler (Greenings)
+with support of Claude Code (Anthropic). The underlying value factor data is the
+intellectual property of the UBA authors (Eser, Matthey, Bünger 2025).
 
 The pipeline architecture mirrors the
 [steen-vf1/eps_value_factors](../steen-vf1/eps_value_factors) project:
@@ -147,4 +155,8 @@ pip install pymupdf4llm       # PDF→MD (fast fallback)
 
 ---
 
-*Generated with [Claude Code](https://claude.ai/claude-code)*
+**Scripts author:** Dr Dimitrij Euler, Greenings — dimitrij.euler@greenings.org
+(with support of [Claude Code](https://claude.ai/claude-code), Anthropic)
+
+**Handbook author:** Nadia Eser, Dr. Astrid Matthey, Dr. Björn Bünger —
+German Environment Agency (UBA), Dessau-Roßlau (ISSN 2363-832X)

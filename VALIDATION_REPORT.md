@@ -195,4 +195,5 @@ expected wall-clock time (< 1 s for all 10 groups).
 
 ---
 
-*Document Version 1.0 | Last Updated 2026-03-05 | Maintained by Greenings | Contact: dimitrij.euler@greenings.org*
+*Scripts: Dr Dimitrij Euler, Greenings (dimitrij.euler@greenings.org), with support of Claude Code (Anthropic) |
+Handbook: Nadia Eser, Dr. Astrid Matthey, Dr. Björn Bünger — German Environment Agency (UBA), December 2025 | Document Version 1.0 | Last Updated 2026-03-05*
