@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+*.pyo
+output/
+execution_log_*.txt
+*.Zone.Identifier
