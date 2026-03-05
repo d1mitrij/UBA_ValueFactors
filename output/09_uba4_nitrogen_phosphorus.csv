@@ -1,0 +1,12 @@
+source_table,chapter,substance,pathway,prtp_pct,value_factor,unit,note
+Table 22,6,NOx,air,,124,EUR_2025/kg_N,per kg N
+Table 22,6,NH3,air,,36.82,EUR_2025/kg_N,per kg N
+Table 22,6,N2O,air,1,186,EUR_2025/kg_N,per kg N; 1% PRTP
+Table 22,6,N2O,air,0,444,EUR_2025/kg_N,per kg N; 0% PRTP
+Table 23,6,Nitrogen,groundwater,,2.24,EUR_2025/kg,limiting substance
+Table 23,6,Nitrogen,inland_waters,,14.08,EUR_2025/kg,limiting substance
+Table 23,6,Nitrogen,coastal_marine_waters,,24.86,EUR_2025/kg,limiting substance
+Table 23,6,Phosphorus,inland_waters,,437,EUR_2025/kg,limiting substance
+Table 23,6,Phosphorus,coastal_marine_waters,,799,EUR_2025/kg,limiting substance
+Table 24,6,Nitrogen,surface_water_unknown,,24.86,EUR_2025/kg,unknown limiting substance
+Table 24,6,Phosphorus,surface_water_unknown,,437,EUR_2025/kg,unknown limiting substance

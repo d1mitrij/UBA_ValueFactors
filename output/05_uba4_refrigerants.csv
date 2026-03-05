@@ -1,0 +1,17 @@
+source_table,chapter,classification,category,refrigerant,gwp100,prtp_pct,value_factor,unit
+Table 7,4,stable_in_air,Hydrofluorocarbons,R-32,675,1,230,EUR_2025/kg_refrigerant
+Table 7,4,stable_in_air,Hydrofluorocarbons,R-32,675,0,670,EUR_2025/kg_refrigerant
+Table 7,4,stable_in_air,Hydrofluorocarbons,R-134a,1430,1,490,EUR_2025/kg_refrigerant
+Table 7,4,stable_in_air,Hydrofluorocarbons,R-134a,1430,0,1415,EUR_2025/kg_refrigerant
+Table 7,4,stable_in_air,Hydrofluorocarbons,R-410A,2088,1,720,EUR_2025/kg_refrigerant
+Table 7,4,stable_in_air,Hydrofluorocarbons,R-410A,2088,0,2070,EUR_2025/kg_refrigerant
+Table 7,4,non_stable_in_air,Propane,R-290,3,1,1,EUR_2025/kg_refrigerant
+Table 7,4,non_stable_in_air,Propane,R-290,3,0,3,EUR_2025/kg_refrigerant
+Table 7,4,non_stable_in_air,NH3,R-717,0,1,0,EUR_2025/kg_refrigerant
+Table 7,4,non_stable_in_air,NH3,R-717,0,0,0,EUR_2025/kg_refrigerant
+Table 7,4,non_stable_in_air,CO2,R-744,1,1,0.3,EUR_2025/kg_refrigerant
+Table 7,4,non_stable_in_air,CO2,R-744,1,0,1,EUR_2025/kg_refrigerant
+Table 7,4,non_stable_in_air,Isobutane,R-600a,3,1,1,EUR_2025/kg_refrigerant
+Table 7,4,non_stable_in_air,Isobutane,R-600a,3,0,3,EUR_2025/kg_refrigerant
+Table 7,4,non_stable_in_air,Propane,R-1270,2,1,0.7,EUR_2025/kg_refrigerant
+Table 7,4,non_stable_in_air,Propane,R-1270,2,0,2,EUR_2025/kg_refrigerant

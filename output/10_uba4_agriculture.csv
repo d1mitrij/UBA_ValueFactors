@@ -1,0 +1,21 @@
+source_table,chapter,category,item,prtp_pct,value_factor,unit,note
+Table 25,7,animal_product,Milk,1,0.63,EUR_2025/kg,"conventional production; excl. biodiversity, most ecosystem services, animal welfare"
+Table 25,7,animal_product,Milk,0,1.35,EUR_2025/kg,"conventional production; excl. biodiversity, most ecosystem services, animal welfare"
+Table 25,7,animal_product,Hard_cheese_before_sale,1,6.65,EUR_2025/kg,"conventional production; excl. biodiversity, most ecosystem services, animal welfare"
+Table 25,7,animal_product,Hard_cheese_before_sale,0,12.46,EUR_2025/kg,"conventional production; excl. biodiversity, most ecosystem services, animal welfare"
+Table 25,7,animal_product,Beef_slaughter_weight,1,33.51,EUR_2025/kg,"conventional production; excl. biodiversity, most ecosystem services, animal welfare"
+Table 25,7,animal_product,Beef_slaughter_weight,0,52.4,EUR_2025/kg,"conventional production; excl. biodiversity, most ecosystem services, animal welfare"
+Table 25,7,animal_product,Beef_dairy_cattle_slaughter_weight,1,7.0,EUR_2025/kg,"conventional production; excl. biodiversity, most ecosystem services, animal welfare"
+Table 25,7,animal_product,Beef_dairy_cattle_slaughter_weight,0,11.8,EUR_2025/kg,"conventional production; excl. biodiversity, most ecosystem services, animal welfare"
+Table 25,7,animal_product,Pork_slaughter_weight,1,5.83,EUR_2025/kg,"conventional production; excl. biodiversity, most ecosystem services, animal welfare"
+Table 25,7,animal_product,Pork_slaughter_weight,0,9.38,EUR_2025/kg,"conventional production; excl. biodiversity, most ecosystem services, animal welfare"
+Table 25,7,animal_product,Poultry_slaughter_weight,1,3.16,EUR_2025/kg,"conventional production; excl. biodiversity, most ecosystem services, animal welfare"
+Table 25,7,animal_product,Poultry_slaughter_weight,0,6.43,EUR_2025/kg,"conventional production; excl. biodiversity, most ecosystem services, animal welfare"
+Table 25,7,animal_product,Eggs,1,2.34,EUR_2025/kg,"conventional production; excl. biodiversity, most ecosystem services, animal welfare"
+Table 25,7,animal_product,Eggs,0,4.11,EUR_2025/kg,"conventional production; excl. biodiversity, most ecosystem services, animal welfare"
+Table 26,7,fertilizer_application,Nitrogen,1,8.4,EUR_2025/kg_applied,total amount applied incl. absorbed portion
+Table 26,7,fertilizer_application,Nitrogen,0,12.0,EUR_2025/kg_applied,total amount applied incl. absorbed portion
+Table 26,7,fertilizer_application,Phosphorus,,22.27,EUR_2025/kg_applied,total amount applied incl. absorbed portion
+Table 27,7,nutrient_surplus,Nitrogen,1,21.06,EUR_2025/kg,excess nutrients emitted to environment
+Table 27,7,nutrient_surplus,Nitrogen,0,28.82,EUR_2025/kg,excess nutrients emitted to environment
+Table 27,7,nutrient_surplus,Phosphorus,,437,EUR_2025/kg,excess nutrients emitted to environment
