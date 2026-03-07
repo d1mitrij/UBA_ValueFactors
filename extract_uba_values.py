@@ -1,9 +1,7 @@
 """
 extract_uba_values.py — UBA Methodological Convention 4.0 (December 2025)
 
-Orchestrator script — mirrors steen-vf1/eps_value_factors/run_all_eps_factors.py
-
-Extracts all value factors from the UBA Handbook on Environmental Value Factors
+Orchestrator script — extracts all value factors from the UBA Handbook on Environmental Value Factors
 (MC 4.0, December 2025) and writes one CSV per table group to the output/ folder.
 
 Usage:

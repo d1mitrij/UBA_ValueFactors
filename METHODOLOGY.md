@@ -220,9 +220,8 @@ All values are expressed in **EUR_2025** (price level of 2025):
 > Prices are adjusted for inflation using Destatis Consumer Price Index data
 > (cumulative CPI increase through end of 2024 applied to the 2025 base).
 
-Unlike steen-vf1 (which applies a year-specific EU HICP deflator to produce
-year-nominal coefficients), UBA MC 4.0 values are published as a single
-EUR_2025 figure per cell — no additional deflation step is applied in this pipeline.
+UBA MC 4.0 values are published as a single EUR_2025 figure per cell —
+no additional deflation step is applied in this pipeline.
 
 ---
 

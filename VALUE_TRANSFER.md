@@ -11,10 +11,9 @@
 Value transfer is the process of adapting an environmental monetary value estimated
 in one geographic or economic context (the **study site**) to another context
 (the **policy site**). For this dataset the UBA MC 4.0 handbook provides
-Germany-specific or global values in EUR_2025. The transitionvaluation framework
-requires country-differentiated coefficient matrices of shape
-`C[year, indicator, country, sector]` covering 188 countries and 19 or 21
-NACE sectors.
+Germany-specific or global values in EUR_2025. Country-differentiated coefficient
+matrices of shape `C[year, indicator, country, sector]` covering 188 countries and
+19 or 21 NACE sectors may be derived using the approaches in this document.
 
 This document describes, for each of the 10 UBA table groups, how the
 Germany-specific base value can be transferred to the full country matrix
@@ -26,7 +25,7 @@ using one of three recognised approaches:
 | **Value function transfer** | VFT | Apply an empirical WTP-income elasticity function to rescale the German value by GDP per capita |
 | **Parameter transfer** | PT | Re-derive the value using country-specific physical parameters (population density, water scarcity, energy mix) with the same dose-response function |
 
-### General coefficient formula (WifOR convention)
+### General coefficient formula
 
 ```
 C[y, i, c, s] = Sign(i) × D[i, c] × I_USD[y]
@@ -44,7 +43,7 @@ where:
 **Currency conversion:** UBA values are in EUR_2025. Convert to USD using the
 average EUR/USD exchange rate for 2025 (approximately 1.07) before applying the
 value transfer adjustments. All output coefficients should be in USD for
-compatibility with the WifOR `C[y,i,c,s]` convention.
+consistency with the `C[y,i,c,s]` coefficient matrix convention.
 
 ---
 
@@ -458,10 +457,9 @@ pathways, each transferred appropriately.
 
 ---
 
-## Integration into the Transitionvaluation Coefficient Matrix
+## Integration into the Coefficient Matrix
 
-Once value-transferred, each UBA indicator produces a DataFrame conforming to
-the WifOR transitionvaluation convention:
+Once value-transferred, each UBA indicator produces a DataFrame with the following structure:
 
 ```python
 # Row MultiIndex:    (Year, Variable)
@@ -482,8 +480,6 @@ C.loc[("2025", "UBA_AirPollutants_PM2.5_health, in USD/t (UBA2025)"), ("BRA", "A
 
 ### Output file naming
 
-Following the steen-vf1 / WifOR convention:
-
 ```
 output/
   11_uba4_ghg_transferred.h5
@@ -492,8 +488,7 @@ output/
   ...
 ```
 
-Each `.h5` file contains keys `"coefficient"` and `"unit"` matching the
-WifOR HDF5 schema.
+Each `.h5` file contains keys `"coefficient"` and `"unit"`.
 
 ---
 
@@ -517,9 +512,8 @@ WifOR HDF5 schema.
    Variable rows.
 
 5. **Currency base.** UBA values are EUR_2025. After EUR/USD conversion, the
-   temporal deflation uses the USA GDP deflator (WifOR convention), not the
-   EU HICP deflator used in the steen-vf1 pipeline. This is intentional for
-   WifOR framework compatibility.
+   temporal deflation uses the USA GDP deflator, not the EU HICP deflator.
+   This is intentional for USD-based coefficient matrix compatibility.
 
 ---
 

@@ -133,9 +133,7 @@ from the PDF into `pipeline.py` data structures. The transcription process:
    sum of components).
 4. Run `extract_uba_values.py` and verify output CSV against the PDF.
 
-This approach mirrors steen-vf1's special-parser methodology for the three
-non-standard EPS sheets (fossil resources, radionuclides, waste) where cell
-positions are hard-coded.
+Cell positions are hard-coded and verified against the source PDF on each update.
 
 ---
 

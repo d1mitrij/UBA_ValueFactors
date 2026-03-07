@@ -3,8 +3,7 @@ pipeline.py — UBA Methodological Convention 4.0 (December 2025)
 Handbook on Environmental Value Factors
 
 Hard-coded value factor data from all tables in the handbook.
-Mirrors the steen-vf1/eps_value_factors/pipeline.py pattern:
-  run_table(key)  →  loads data  →  saves CSV
+Public API: run_table(key)  →  loads data  →  saves CSV
 
 All monetary values are in EUR_2025 (price level of 2025, inflation taken
 into account up to end of 2024, per Destatis 2025).
@@ -699,7 +698,7 @@ _BUILDERS = {
 
 
 # ──────────────────────────────────────────────────────────────────────────────
-# Public API — mirrors steen-vf1 pipeline.run_indicator()
+# Public API
 # ──────────────────────────────────────────────────────────────────────────────
 def _write_excel(rows: list[dict], fieldnames: list[str], cfg: dict) -> Path:
     """Write rows to a formatted .xlsx file. Returns the Excel path."""

@@ -8,7 +8,7 @@
 
 | ADR | Title | Status |
 |-----|-------|--------|
-| ADR-001 | Mirror the steen-vf1 three-file pipeline pattern | Accepted |
+| ADR-001 | Three-file pipeline pattern (config + pipeline + orchestrator) | Accepted |
 | ADR-002 | Hard-code value factor data rather than parsing the PDF | Accepted |
 | ADR-003 | Use CSV as primary output format (not HDF5) | Accepted |
 | ADR-004 | Add Excel output with formatted header and Metadata sheet | Accepted |
@@ -21,32 +21,30 @@
 
 ---
 
-## ADR-001 — Mirror the steen-vf1 three-file pipeline pattern
+## ADR-001 — Three-file pipeline pattern (config + pipeline + orchestrator)
 
 **Status:** Accepted
 **Date:** 2026-03-05
 
 ### Context
 
-The [steen-vf1/eps_value_factors](../steen-vf1/eps_value_factors) project established
-a clear pipeline architecture (`config.py` → `pipeline.py` → orchestrator) that is
-already understood by the team. Adopting the same pattern for UBA data reduces the
-learning curve for contributors.
+A clean separation of concerns is needed between table group metadata,
+data definitions, and execution orchestration.
 
 ### Decision
 
-Three core files mirror steen-vf1 exactly:
+Three core files implement the pipeline:
 
-| steen-vf1 | uba1 | Role |
-|---|---|---|
-| `config.py` | `config.py` | Table group metadata, output paths |
-| `pipeline.py` | `pipeline.py` | Data definitions + builder functions + public API |
-| `run_all_eps_factors.py` | `extract_uba_values.py` | Orchestrator with argparse |
+| File | Role |
+|---|---|
+| `config.py` | Table group metadata, output paths |
+| `pipeline.py` | Data definitions + builder functions + public API |
+| `extract_uba_values.py` | Orchestrator with argparse |
 
 ### Consequences
 
-- Familiar structure for anyone who has worked with steen-vf1.
-- Function signatures (`run_table(key) → Path`) mirror `run_indicator(key) → Path`.
+- Clear separation: configuration, data, and execution are in distinct files.
+- Function signature `run_table(key) → Path` is the stable public API.
 
 ---
 
@@ -68,9 +66,8 @@ All value factors are hard-coded as Python data structures (`list`, `dict`, `tup
 in `pipeline.py`. Builder functions (`_build_ghg_rows()`, etc.) convert these
 structures to `list[dict]` for CSV/Excel writing.
 
-This mirrors the approach used for steen-vf1's three special-parser sheets
-(`_load_fossil_resources`, `_load_radionuclides`, `_load_waste`), which also
-hard-code cell positions.
+Hard-coded data structures are verified once against the source PDF, eliminating
+parsing errors at runtime.
 
 ### Consequences
 
@@ -87,10 +84,6 @@ hard-code cell positions.
 **Date:** 2026-03-05
 
 ### Context
-
-steen-vf1 uses HDF5 as primary output because its coefficient matrix has shape
-`(N_years × N_substances, N_countries × N_sectors)` — up to 22 million cells per
-indicator — which is impractical in CSV.
 
 UBA MC 4.0 data is fundamentally flat: each table group is a simple 2-D table
 with O(10–150) rows and O(7–14) columns. No country or sector dimension is
@@ -118,8 +111,7 @@ standard `csv.DictWriter` output.
 ### Context
 
 Users working in Excel benefit from formatted headers and a Metadata sheet that
-shows the publication source, unit, and scope of each table group. steen-vf1
-provides Excel output; matching this improves usability parity.
+shows the publication source, unit, and scope of each table group.
 
 ### Decision
 
@@ -127,7 +119,7 @@ provides Excel output; matching this improves usability parity.
 - Sheet 1 `"Value Factors"`: data with frozen header row and blue header fill.
 - Sheet 2 `"Metadata"`: publication fields, table group description, unit, notes.
 
-Implementation uses `openpyxl` (already present as a dependency of steen-vf1).
+Implementation uses `openpyxl`.
 
 ### Consequences
 
@@ -145,10 +137,6 @@ Implementation uses `openpyxl` (already present as a dependency of steen-vf1).
 
 ### Context
 
-steen-vf1 uses `ThreadPoolExecutor` + subprocess per indicator because each
-indicator script reads from a large XLSX and the parallelism reduces wall time
-from ~575 s to ~110 s.
-
 UBA table groups call in-memory builder functions (no file I/O per group) and
 complete in < 0.1 s each. Total wall time is < 0.5 s for all 10 groups sequentially.
 
@@ -161,8 +149,7 @@ No `ThreadPoolExecutor`, no subprocess spawning.
 
 - Simpler code; no race conditions or subprocess timeout edge cases.
 - If groups were to become I/O-bound in a future version (e.g. reading from a live
-  API), the parallel pattern from steen-vf1 can be adopted without changing the
-  `pipeline.run_table()` API.
+  API), parallelism can be added without changing the `pipeline.run_table()` API.
 
 ---
 
@@ -173,9 +160,8 @@ No `ThreadPoolExecutor`, no subprocess spawning.
 
 ### Context
 
-steen-vf1 has `indicators/NNN_*.py` thin-wrapper scripts that allow running a
-single indicator in isolation (`python indicators/001_*.py`). This is useful for
-development and debugging.
+Thin per-table-group wrapper scripts allow running a single table in isolation,
+which is useful for development and debugging.
 
 ### Decision
 
@@ -256,14 +242,13 @@ The explicit `fieldnames` list in `_BUILDERS` is the authoritative column schema
 
 ### Context
 
-steen-vf1 writes `execution_log_{datetime}.txt` for every orchestrator run.
-This creates an audit trail: which groups succeeded, which failed, and when the
-extraction was last run.
+A timestamped execution log creates an audit trail: which groups succeeded, which
+failed, and when the extraction was last run.
 
 ### Decision
 
 `extract_uba_values.py` writes `execution_log_{YYYYMMDD_HHMMSS}.txt` to the
-project root at the end of each run. Format mirrors steen-vf1:
+project root at the end of each run:
 
 ```
 UBA MC 4.0 Execution Log — 2026-03-05T...
@@ -290,8 +275,8 @@ Total: 10/10 succeeded  wall-clock 0.3s
 
 ### Context
 
-steen-vf1 uses a `data/` subfolder for source XLSX files. The UBA source is a single
-PDF; the converted Markdown is a derived file used for reference and QA.
+The UBA source is a single PDF; the converted Markdown is a derived file used for
+reference and QA.
 
 ### Decision
 

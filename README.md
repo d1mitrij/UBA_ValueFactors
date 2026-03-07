@@ -20,10 +20,8 @@ The extraction scripts and documentation were written by Dr Dimitrij Euler (Gree
 with support of Claude Code (Anthropic). The underlying value factor data is the
 intellectual property of the UBA authors (Eser, Matthey, Bünger 2025).
 
-The pipeline architecture mirrors the
-[steen-vf1/eps_value_factors](../steen-vf1/eps_value_factors) project:
-a `config.py` → `pipeline.py` → orchestrator pattern, with individual per-table-group
-entry-point scripts under `tables/`.
+The pipeline follows a `config.py` → `pipeline.py` → orchestrator pattern, with
+individual per-table-group entry-point scripts under `tables/`.
 
 ### Publication
 
@@ -141,17 +139,6 @@ pip install pymupdf4llm       # PDF→MD (fast fallback)
 > German Environment Agency (UBA), Dessau-Roßlau. ISSN 2363-832X.
 
 ---
-
-## Relation to steen-vf1 / transitionvaluation
-
-| steen-vf1 | uba1 | Note |
-|---|---|---|
-| `config.py` → `INDICATORS` dict | `config.py` → `TABLE_GROUPS` dict | Same pattern |
-| `pipeline.run_indicator(key)` | `pipeline.run_table(key)` | Same signature |
-| `indicators/NNN_*.py` | `tables/NN_*.py` | Same thin-wrapper pattern |
-| `run_all_eps_factors.py` | `extract_uba_values.py` | Same orchestrator pattern |
-| HDF5 + Excel output | CSV + Excel output | UBA data is flat (no country×sector matrix) |
-| `execution_log_*.txt` | `execution_log_*.txt` | Same timestamped log format |
 
 ---
 

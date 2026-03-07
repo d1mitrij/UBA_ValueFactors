@@ -3,7 +3,6 @@ config.py — UBA Methodological Convention 4.0 (December 2025)
 Handbook on Environmental Value Factors
 
 Defines all table groups, their metadata and output paths.
-Mirrors the steen-vf1/eps_value_factors/config.py pattern.
 """
 
 from pathlib import Path
@@ -29,7 +28,7 @@ PUBLICATION = {
 }
 
 # ──────────────────────────────────────────────────────────────────────────────
-# Table groups  (analogous to steen-vf1 INDICATORS dict)
+# Table groups
 # ──────────────────────────────────────────────────────────────────────────────
 TABLE_GROUPS = {
     "ghg": {
